@@ -5,23 +5,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.notes.databinding.ActivityAllNotesBinding
+import com.example.notes.databinding.ActivitySearchBinding
 
-class AllNotes : AppCompatActivity() {
-    lateinit var binding: ActivityAllNotesBinding
+class SearchActivity : AppCompatActivity() {
+    lateinit var binding: ActivitySearchBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAllNotesBinding.inflate(layoutInflater)
+        binding = ActivitySearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.bNav.selectedItemId = R.id.item1
+        binding.bNav.selectedItemId = R.id.item2
         binding.bNav.setOnNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.item1 -> {
+                    val intent = Intent(this, AllNotes::class.java)
+                    startActivity(intent)
                     Toast.makeText(this, "Item 1", Toast.LENGTH_SHORT).show()
                 }
                 R.id.item2 -> {
-                    val intent = Intent(this, SearchActivity::class.java)
-                    startActivity(intent)
+
                 }
                 R.id.item3 -> {
                     val intent = Intent(this, AddNote::class.java)
